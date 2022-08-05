@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>Mapbox Menu Example</title>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+		<link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
+		<style>
+			body { margin:0; padding:0; }
+			#map { position:absolute; top:0; bottom:0; width:100%; }
+			#menu { position: absolute; background: #fff; padding: 10px; font-family: 'Open Sans', sans-serif;}
+		</style>
+	</head>
+	<body>
+		<div id='map'></div>
+		<!-- menu items -->
+		<div id='menu'>
+			<input id='mapbox://styles/mapbox/light-v10' type='radio' name='rtoggle' value='light' checked='checked'>
+			<label for='light'>Default</label>
+			<input id='insert point map style url here' type='radio' name='rtoggle' value='locations'>
+			<label for='locations'>Book locations</label>
+			<input id='insert heatmap style url here' type='radio' name='rtoggle' value='heatmap'>
+			<label for='heatmap'>Book location heatmap</label>
+		</div>
+		<script>
+			mapboxgl.accessToken = 'insert mapbox access token here'; // mapbox access token
+			const map = new mapboxgl.Map({
+				container: 'map',
+				style: 'mapbox://styles/mapbox/light-v10', //initial map style
+				center: [-1, 52], // starting position [lng, lat]
+				zoom: 5 // starting zoom
+			});
+
+			// layer switching code beneath here:
+			var layerList = document.getElementById('menu');
+			var inputs = layerList.getElementsByTagName('input');
+			 
+			function switchLayer(layer) {
+				var layerId = layer.target.id;
+				map.setStyle(layerId);
+			}
+			 
+			for (var i = 0; i < inputs.length; i++) {
+				inputs[i].onclick = switchLayer;
+			}
+		</script>
+	</body>
+</html>
