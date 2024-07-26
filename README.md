@@ -32,3 +32,6 @@ In the Repository you can find a workbook with all the instructions, a .csv data
 - Add our own data from a spreadsheet
 - Style our data
 - Create a map to put on a website
+
+## License
+This repository has a [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc/4.0/) license
